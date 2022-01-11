@@ -21,7 +21,7 @@ if (!empty($_POST)) {
             $stmt->execute();
 			$member = $stmt->fetch(PDO::FETCH_ASSOC);
 //  ここにパスワードのチェック処理を完成させる
-//  		if( xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ) {
+//  		if( xxxxxxxxxxxxxxxx ) {
 				// ログイン成功
 
 //  ここにセッションハイジャック対策を追加
@@ -52,47 +52,51 @@ if (!empty($_POST)) {
 ?>
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>ログイン画面</title>
 
-	<link rel="stylesheet" href="style.css" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ログイン画面</title>
+
+    <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-	<div id="wrap">
-		<div id="head">
-			<h1>ログイン画面</h1>
-		</div>
-		<div id="content">
-			<div id="lead">
-				<p>メールアドレスとパスワードを入力してログインしてください。</p>
-				<p>会員登録がまだの方はこちらからどうぞ。</p>
-				<p>&raquo;<a href="input.php">会員登録手続きをする</a></p>
-			</div>
-			<form action="" method="POST">
-				<dl>
-					<dt>メールアドレス</dt>
-					<dd>
-						<input type="text" name="email" size="35" maxlength="255" value="<?php echo htmlspecialchars($_POST['email'], ENT_QUOTES); ?>"/>
-						<?php if ($error['login'] == 'blank'): ?>
-							<p class="error">* メールアドレスとパスワードをご記入ください</p>
-						<?php endif; ?>
-						<?php if ($error['login'] == 'failed'): ?>
-							<p class="error">* ユーザーIDあるいはパスワードに誤りがあります。正しく入力ください。</p>
-						<?php endif; ?>
-					</dd>
-					<dt>パスワード</dt>
-					<dd>
-						<input type="password" name="password" size="35" maxlength="255" value="<?php echo htmlspecialchars($_POST['password'], ENT_QUOTES); ?>" />
-					</dd>
-				</dl>
-				<div><input type="submit" value="ログインする" /></div>
-			</form>
-		</div>
+    <div id="wrap">
+        <div id="head">
+            <h1>ログイン画面</h1>
+        </div>
+        <div id="content">
+            <div id="lead">
+                <p>メールアドレスとパスワードを入力してログインしてください。</p>
+                <p>会員登録がまだの方はこちらからどうぞ。</p>
+                <p>&raquo;<a href="input.php">会員登録手続きをする</a></p>
+            </div>
+            <form action="" method="POST">
+                <dl>
+                    <dt>メールアドレス</dt>
+                    <dd>
+                        <input type="text" name="email" size="35" maxlength="255"
+                            value="<?php echo htmlspecialchars($_POST['email'], ENT_QUOTES); ?>" />
+                        <?php if ($error['login'] == 'blank'): ?>
+                        <p class="error">* メールアドレスとパスワードをご記入ください</p>
+                        <?php endif; ?>
+                        <?php if ($error['login'] == 'failed'): ?>
+                        <p class="error">* ユーザーIDあるいはパスワードに誤りがあります。正しく入力ください。</p>
+                        <?php endif; ?>
+                    </dd>
+                    <dt>パスワード</dt>
+                    <dd>
+                        <input type="password" name="password" size="35" maxlength="255"
+                            value="<?php echo htmlspecialchars($_POST['password'], ENT_QUOTES); ?>" />
+                    </dd>
+                </dl>
+                <div><input type="submit" value="ログインする" /></div>
+            </form>
+        </div>
 
-	</div>
+    </div>
 </body>
+
 </html>
